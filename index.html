@@ -3,120 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Octavio Sánchez Huerta | Senior Software Engineer</title>
+    <title>Octavio Sánchez Huerta | Senior Software Engineer</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         :root {
-            --primary-color: #003366; 
-            --secondary-color: #005b9f;
-            --accent-color: #e67e22; 
-            --text-color: #333;
-            --light-bg: #f4f7f6;
-            --white: #ffffff;
-            --border-color: #e0e0e0;
+            --primary-bg: #003366;
+            --secondary-bg: #005b9f;
+            --accent-color: #e67e22;
         }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Roboto', sans-serif; background-color: var(--light-bg); color: var(--text-color); line-height: 1.6; }
-
-        /* Navigation */
-        nav { background-color: var(--primary-color); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); padding: 0 20px; }
-        nav ul { max-width: 1100px; margin: 0 auto; list-style: none; display: flex; justify-content: center; flex-wrap: wrap; }
-        nav ul li a { display: block; color: white; text-decoration: none; padding: 15px 15px; font-size: 0.9em; text-transform: uppercase; font-weight: 500; transition: background 0.3s; }
-        nav ul li a:hover { background-color: var(--secondary-color); border-bottom: 3px solid var(--accent-color); }
-
-        /* Layout */
-        .container { max-width: 1100px; margin: 20px auto; background: var(--white); box-shadow: 0 0 20px rgba(0,0,0,0.05); border-radius: 5px; overflow: hidden; }
-
-        /* Header */
-        header { background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: white; padding: 50px 20px; text-align: center; }
-        header h1 { font-size: 2.8em; margin-bottom: 10px; }
-        header h2 { font-size: 1.2em; font-weight: 300; opacity: 0.9; margin-bottom: 25px; }
-
-        .contact-bar { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; font-size: 0.95em; }
-        .contact-item { display: flex; align-items: center; gap: 5px; }
-        .contact-item a { color: white; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.5); }
-
-        .social-links { margin-top: 20px; display: flex; justify-content: center; gap: 15px; }
-        .social-links a { color: white; font-size: 1.2em; background: rgba(255,255,255,0.1); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; transition: transform 0.3s, background 0.3s; }
-        .social-links a:hover { background: var(--accent-color); transform: translateY(-3px); }
-
-        /* Content */
-        main { padding: 40px; }
-        section { margin-bottom: 50px; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-        section.visible { opacity: 1; transform: translateY(0); }
-
-        .section-title { color: var(--primary-color); border-left: 5px solid var(--accent-color); padding-left: 15px; font-size: 1.8em; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* Job Cards */
-        .job-card { margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid #eee; }
-        .job-card:last-child { border-bottom: none; }
-        .job-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 10px; }
-        .job-role { font-size: 1.3em; font-weight: 700; color: var(--secondary-color); }
-        .job-company { font-size: 1.1em; color: #555; font-weight: 500; }
-        .job-date { background: #eee; color: #666; padding: 2px 10px; border-radius: 12px; font-size: 0.85em; white-space: nowrap; }
-        .job-desc { margin-bottom: 10px; }
-        .tech-stack { font-size: 0.9em; background: #f9f9f9; padding: 10px; border-radius: 5px; border-left: 3px solid var(--secondary-color); }
-
-        /* Grids */
-        .grid-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); gap: 20px; }
-        .item-card { background: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #ccc; }
-        .item-card.cert { border-left-color: var(--accent-color); }
-        .item-card.edu { border-left-color: var(--primary-color); }
-        .item-title { font-weight: bold; color: var(--text-color); display: block; margin-bottom: 4px; }
-        .item-subtitle { color: #666; font-size: 0.9em; display: block; }
-        .item-meta { color: #888; font-size: 0.8em; margin-top: 5px; display: block; }
-
-        /* Skills */
-        .skills-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        .skill-group h4 { color: var(--primary-color); margin-bottom: 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { background: var(--white); border: 1px solid var(--secondary-color); color: var(--secondary-color); padding: 4px 10px; border-radius: 4px; font-size: 0.85em; font-weight: 500; }
-
-        /* Lists */
-        .list-group { list-style: none; }
-        .list-group li { margin-bottom: 15px; padding-left: 20px; position: relative; }
-        .list-group li::before { content: "\f02e"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 0; color: var(--accent-color); top: 2px; font-size: 0.9em; }
-        .list-group a { color: var(--secondary-color); text-decoration: none; font-weight: 500; }
-        .list-group a:hover { text-decoration: underline; }
-
-        @media (max-width: 768px) {
-            header h1 { font-size: 2em; }
-            .job-header { flex-direction: column; }
-            .grid-list { grid-template-columns: 1fr; }
-            nav ul { flex-direction: column; text-align: center; display: none; }
-            nav:hover ul { display: flex; }
-            nav::after { content: "MENU \2630"; display: block; text-align: center; color: white; padding: 10px; cursor: pointer; }
-            nav:hover::after { display: none; }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            position: relative;
+        }
+        .navbar {
+            background-color: var(--primary-bg) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .nav-link {
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .nav-link.active {
+            color: var(--accent-color) !important;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 0 0 1rem 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .social-icons a {
+            color: white;
+            background: rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .social-icons a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        .section-title {
+            color: var(--primary-bg);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .job-card {
+            border-left: 4px solid var(--secondary-bg);
+            transition: transform 0.2s;
+        }
+        .job-card:hover {
+            transform: translateX(5px);
+            border-left-color: var(--accent-color);
+        }
+        .tech-stack {
+            background-color: #f1f3f5;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+        }
+        .skill-badge {
+            background-color: white;
+            color: var(--secondary-bg);
+            border: 1px solid var(--secondary-bg);
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        .card-custom {
+            height: 100%;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .list-group-item-custom {
+            border-left: 3px solid var(--accent-color);
+            margin-bottom: 8px;
+            border-radius: 4px !important;
         }
     </style>
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target="#mainNavbar" data-bs-offset="70" tabindex="0">
 
-    <nav>
-        <ul>
-            <li><a href="#summary">Summary</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#publications">Publications</a></li>
-        </ul>
+    <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">About me</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#summary">Summary</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education & Certs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#extra">Awards & Extra</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     <div class="container">
-        <header>
-            <h1>Octavio Sánchez Huerta</h1>
-            <h2>Senior Software Engineer & Technical Lead</h2>
+        <header class="hero-section text-center">
+            <h1 class="display-4 fw-bold">Octavio Sánchez Huerta</h1>
+            <h2 class="h4 fw-light mb-4">Senior Software Engineer & Technical Lead</h2>
             
-            <div class="contact-bar">
-                <div class="contact-item"><i class="fas fa-map-marker-alt"></i> México</div>
-                <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:osanchezhuerta@gmail.com">osanchezhuerta@gmail.com</a></div>
+            <div class="d-flex justify-content-center flex-wrap gap-3 mb-4">
+                <span><i class="fas fa-map-marker-alt text-warning"></i> México</span>
+   
             </div>
 
-            <div class="social-links">
+            <div class="social-icons">
                 <a href="https://www.linkedin.com/in/osanchezh" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://github.com/osanchezh" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
                 <a href="http://codefixes.blogspot.mx/" target="_blank" title="Blog"><i class="fas fa-blog"></i></a>
@@ -125,213 +140,291 @@
             </div>
         </header>
 
-        <main>
-            <section id="summary">
-                <h3 class="section-title">Professional Summary</h3>
-                <p>Senior Software Engineer and Technical Lead with 18+ years of experience designing and delivering mission-critical enterprise systems across banking, financial markets, telecommunications, insurance, and government sectors. Specialized in Java ecosystems, distributed systems, middleware integration, and cloud-native architectures. Proven leadership in large-scale payment platforms, FX trading systems, and high-availability services processing millions of transactions daily. I am currently pursuing a PhD in Computer Science focused on predictive AI for financial systems.</p>
-            </section>
+        <section id="summary" class="mb-5 pt-4">
+            <h3 class="section-title">Professional Summary</h3>
+            <div class="card card-custom p-4">
+                <p class="lead mb-0 fs-6">Senior Software Engineer and Technical Lead with 18+ years of experience designing and delivering mission-critical enterprise systems across banking, financial markets, telecommunications, insurance, and government sectors. Specialized in Java ecosystems, distributed systems, middleware integration, and cloud-native architectures. Proven leadership in large-scale payment platforms, FX trading systems, and high-availability services processing millions of transactions daily. I am currently pursuing a PhD in Computer Science focused on predictive AI for financial systems.</p>
+            </div>
+        </section>
 
-            <section id="experience">
-                <h3 class="section-title">Professional Experience</h3>
-
-                <div class="job-card">
-                    <div class="job-header">
-                        <span class="job-role">System Engineer / Technical Leader</span>
-                        <span class="job-company">IDS Comercial (Client: Walmart)</span>
-                        <span class="job-date">June 2025 - Feb 2026</span>
-                    </div>
-                    <p class="job-desc">Analysis, development and collaboration with an international team for Payment Migration. “FlexPOS”: Development of Walmart Electronic Payments System.</p>
-                    <div class="tech-stack"><strong>Tech:</strong> Java 21, Google Cloud, Spring Boot, Apache Kafka, Protocol: 8583, Intellij IDEA 2025, Spring WebFlux, Maven, Cloud Based Architecture, Swift Gateway Platform, Oracle Database, Informix Database, Jenkins, Jacoco, JFrog.</div>
+        <section id="experience" class="mb-5 pt-4">
+            <h3 class="section-title">Professional Experience</h3>
+            
+            <div class="card job-card card-custom mb-4 p-4">
+                <div class="d-flex justify-content-between align-items-md-center flex-column flex-md-row mb-2">
+                    <h4 class="h5 fw-bold text-primary mb-0">System Engineer / Technical Leader</h4>
+                    <span class="badge bg-light text-dark border">June 2025 - February 2026</span>
                 </div>
+                <h5 class="h6 text-secondary mb-3">IDS Comercial (Client: Walmart) <span class="text-muted fw-normal">| Retail & Financial | DevOps</span></h5>
+                <p><strong>Functions:</strong> Analysis, development and collaboration with an international team for Payment Migration.</p>
+                <p><strong>Projects:</strong> “FlexPOS”: Development of Walmart Electronic Payments System.</p>
+                <div class="tech-stack"><strong>Tech:</strong> Java 21, Google Cloud, Spring Boot, Apache Kafka, Protocol: 8583, Intellij IDEA 2025, Spring WebFlux, Maven, Cloud Based Architecture, Swift Gateway Platform, Oracle DB, Informix, Jenkins, Jacoco, JFrog.</div>
+            </div>
 
-                <div class="job-card">
-                    <div class="job-header">
-                        <span class="job-role">Software Engineer / Technical Leader</span>
-                        <span class="job-company">Infosyst / Sygno (Client: Grupo Financiero Monex)</span>
-                        <span class="job-date">Oct 2016 - June 2025</span>
-                    </div>
-                    <p class="job-desc">Analysis, development and installation of integration services with currency exchange applications for "Continuous Linked Settlement" systems platform. The main premise of the project is managing foreign exchange transactions through the international payment cycle.</p>
-                    <div class="tech-stack"><strong>Tech:</strong> Java 7/8/11, Oracle Weblogic 12c, IBM Message Queue 8.0, Spring Framework 4.2.7, Spring Boot 2/3, Oracle Database 11g/12c/19c, Kubernetes, Docker, Apache Kafka, Python 3, Redis, Amazon Web Services.</div>
+            <div class="card job-card card-custom mb-4 p-4">
+                <div class="d-flex justify-content-between align-items-md-center flex-column flex-md-row mb-2">
+                    <h4 class="h5 fw-bold text-primary mb-0">Software Engineer / Technical Leader</h4>
+                    <span class="badge bg-light text-dark border">October 2016 - June 2025</span>
                 </div>
+                <h5 class="h6 text-secondary mb-3">Infosyst / Sygno (Client: Grupo Financiero Monex) <span class="text-muted fw-normal">| Treasury & Trading/Exchange | DevOps</span></h5>
+                <p><strong>Functions:</strong> Analysis, development and installation of integration services with currency exchange applications for "Continuous Linked Settlement" systems platform.</p>
+                <p><strong>Projects:</strong> Integration and Development of the currency market core. Managing foreign exchange transactions through the international payment cycle.</p>
+                <div class="tech-stack"><strong>Tech:</strong> Java 7/8/11, Oracle Weblogic 12c, IBM MQ 8.0, Spring Boot 2/3, Oracle DB 11g/12c/19c, Kubernetes, Docker, Apache Kafka, Python 3, Redis, AWS, Azure, CI/CD, OAuth2, SSO, Websockets.</div>
+            </div>
 
-                <div class="job-card">
-                    <div class="job-header">
-                        <span class="job-role">Software Engineer</span>
-                        <span class="job-company">Global HITSS (Client: TELCEL)</span>
-                        <span class="job-date">Apr 2016 - Oct 2016</span>
-                    </div>
-                    <p class="job-desc">Analyzed and developed micro-services to be integrated with COBOL Mainframe applications and exposed web services through layers that connect with Service Bus.</p>
-                    <div class="tech-stack"><strong>Tech:</strong> Java 8, IBM WAS 8.0, Spring Boot, Apache Camel, Oracle, Informix, AIX, Android SDK.</div>
+            <div class="card job-card card-custom mb-4 p-4">
+                <div class="d-flex justify-content-between align-items-md-center flex-column flex-md-row mb-2">
+                    <h4 class="h5 fw-bold text-primary mb-0">Software Engineer</h4>
+                    <span class="badge bg-light text-dark border">April 2016 - October 2016</span>
                 </div>
+                <h5 class="h6 text-secondary mb-3">Global HITSS (Client: TELCEL) <span class="text-muted fw-normal">| Telecommunications | Scrum</span></h5>
+                <p><strong>Functions:</strong> Analyzed and developed micro-services to be integrated with COBOL Mainframe applications and exposed web services through layers that connect with Service Bus (Apache Camel / JMS / IBM MQ).</p>
+                <div class="tech-stack"><strong>Tech:</strong> Java 7/8, IBM WAS 8.0, Spring Boot 3.1.6, Apache Camel 2.14.4, Oracle DB 10g, IBM DB2, Android SDK, RabbitMQ.</div>
+            </div>
 
-                <div class="job-card">
-                    <div class="job-header">
-                        <span class="job-role">Software Engineer / Head of Dept. Technology</span>
-                        <span class="job-company">SAT (Servicio de Administración Tributaria)</span>
-                        <span class="job-date">Jan 2013 - Aug 2015</span>
-                    </div>
-                    <p class="job-desc">Analysis, design, development and testing of an Enterprise Application related to Tax Collection. Payment Scheduling: Batch Procedure for accounting derivation processing over 1,000,000 payments per day.</p>
-                    <div class="tech-stack"><strong>Tech:</strong> Java 7, Weblogic 11g, Oracle Coherence, Spring Batch, MongoDB, Azure, AWS, Python.</div>
+            <div class="card job-card card-custom mb-4 p-4">
+                <div class="d-flex justify-content-between align-items-md-center flex-column flex-md-row mb-2">
+                    <h4 class="h5 fw-bold text-primary mb-0">Software Engineer / Team Leader</h4>
+                    <span class="badge bg-light text-dark border">September 2015 - April 2016</span>
                 </div>
+                <h5 class="h6 text-secondary mb-3">Intellego (Client: IMSS) <span class="text-muted fw-normal">| Medical Services | Scrum</span></h5>
+                <p><strong>Projects:</strong> “Dictaminación de Contadores Públicos Autorizados”: App to manage the registration of certified public accountants and their legal office affiliations with the institute.</p>
+                <div class="tech-stack"><strong>Tech:</strong> Java 7, Glassfish 3.5, Oracle DB 10g, EJB 3.1, Maven, Eclipselink JPA, JAX-WS 2.0.</div>
+            </div>
 
-                <div class="job-card">
-                    <div class="job-header">
-                        <span class="job-role">Team Leader</span>
-                        <span class="job-company">BBVA Bancomer</span>
-                        <span class="job-date">Sep 2011 - Dec 2012</span>
-                    </div>
-                    <p class="job-desc">Development of scripts and web services in NACAR environment. Account Centralization and Automata Engine.</p>
-                    <div class="tech-stack"><strong>Tech:</strong> Java 7, IBM WAS 7.0, IBM DB2, CICS, Message Queues.</div>
+            <div class="card job-card card-custom mb-4 p-4">
+                <div class="d-flex justify-content-between align-items-md-center flex-column flex-md-row mb-2">
+                    <h4 class="h5 fw-bold text-primary mb-0">Software Engineer / Head of Dept. of Technology</h4>
+                    <span class="badge bg-light text-dark border">January 2013 - August 2015</span>
                 </div>
+                <h5 class="h6 text-secondary mb-3">Servicio de Administración Tributaria de México (SAT) <span class="text-muted fw-normal">| Federal Tax Payments | Agile</span></h5>
+                <p><strong>Projects:</strong> Federal Tax Payment, Payment Scheduling (Batch processing over 1,000,000 payments/day), Financial Interpreter (Payment Engine for Banking Services).</p>
+                <div class="tech-stack"><strong>Tech:</strong> Java 7, Oracle Weblogic 11g, Oracle Coherence, Spring 3.2.2, Spring Batch, MongoDB, Azure, AWS, Data Science, RabbitMQ.</div>
+            </div>
 
-                <div class="job-card">
-                    <div class="job-header">
-                        <span class="job-role">Software Engineer</span>
-                        <span class="job-company">Huawei Technologies México</span>
-                        <span class="job-date">Jan 2011 - Aug 2011</span>
-                    </div>
-                    <p class="job-desc">Social network integration via Web Services on Service Delivery Platform (SDP).</p>
-                    <div class="tech-stack"><strong>Tech:</strong> Java 7, IBM WAS 7.0, DB2, JAX-WS, Axis 2.</div>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-header">
-                        <span class="job-role">Software Engineer Senior</span>
-                        <span class="job-company">AXA Seguros México</span>
-                        <span class="job-date">Jan 2010 - Jan 2011</span>
-                    </div>
-                    <p class="job-desc">Integration of Web Services / MQ with Legacy systems. Development of components for ESB and Accounting/Claims projects.</p>
-                    <div class="tech-stack"><strong>Tech:</strong> Java 6, IBM MQ, Message Broker, Datapower, Spring 2.5, HP-UX, C/C++.</div>
-                </div>
-            </section>
-
-            <section id="skills">
-                <h3 class="section-title">Technical Skills</h3>
-                <div class="skills-container">
-                    <div class="skill-group">
-                        <h4>Application & Web Dev</h4>
-                        <div class="skill-tags">
-                            <span class="tag">Java SE/EE (Advanced)</span>
-                            <span class="tag">C# / J#</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Shell Scripting</span>
-                            <span class="tag">JSP/JSF/ADF</span>
-                            <span class="tag">Angular</span>
-                            <span class="tag">React</span>
-                        </div>
-                    </div>
-                    <div class="skill-group">
-                        <h4>Middleware & Frameworks</h4>
-                        <div class="skill-tags">
-                            <span class="tag">Spring Boot 2/3/4</span>
-                            <span class="tag">Spring Framework</span>
-                            <span class="tag">IBM MQ & Broker</span>
-                            <span class="tag">Apache Kafka</span>
-                            <span class="tag">Oracle Service Bus</span>
-                            <span class="tag">Hibernate</span>
-                            <span class="tag">Quartz</span>
-                        </div>
-                    </div>
-                    <div class="skill-group">
-                        <h4>Cloud & DevOps</h4>
-                        <div class="skill-tags">
-                            <span class="tag">AWS</span>
-                            <span class="tag">Google Cloud</span>
-                            <span class="tag">Oracle Cloud</span>
-                            <span class="tag">Docker</span>
-                            <span class="tag">Maven/Gradle</span>
-                            <span class="tag">Jenkins</span>
-                            <span class="tag">SonarQube</span>
-                        </div>
-                    </div>
-                    <div class="skill-group">
-                        <h4>Data & OS</h4>
-                        <div class="skill-tags">
-                            <span class="tag">Oracle 11g/12c/19c</span>
-                            <span class="tag">SQL Server</span>
-                            <span class="tag">MongoDB</span>
-                            <span class="tag">Linux (RedHat/Ubuntu)</span>
-                            <span class="tag">AIX</span>
-                            <span class="tag">Weblogic</span>
-                            <span class="tag">IBM WAS</span>
+            <div class="accordion" id="accordionExperience">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOlderJobs">
+                        <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOlderJobs">
+                            View Previous Experience (2008 - 2012)
+                        </button>
+                    </h2>
+                    <div id="collapseOlderJobs" class="accordion-collapse collapse" data-bs-parent="#accordionExperience">
+                        <div class="accordion-body bg-light">
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-3"><strong>BBVA Bancomer</strong> - Team Leader (Sep 2011 - Dec 2012) <br><small class="text-muted">Developed scripts/web services in NACAR environment. Centralization Accounts.</small></li>
+                                <li class="mb-3"><strong>Huawei Technologies</strong> - Software Engineer (Jan 2011 - Aug 2011) <br><small class="text-muted">Integrated social network communication via Web Services on Service Delivery Platform.</small></li>
+                                <li class="mb-3"><strong>AXA Seguros</strong> - Software Engineer Senior (Jan 2010 - Jan 2011) <br><small class="text-muted">ESB integration models, Claims Center, Policy Center using IBM MQ & Message Broker.</small></li>
+                                <li class="mb-3"><strong>Comisión Federal de Electricidad</strong> - Java Programmer Internship (Oct 2009)</li>
+                                <li><strong>Luz y Fuerza del Centro</strong> - Java Programmer Social Service (Feb 2008 - Sep 2008)</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="education">
-                <h3 class="section-title">Education</h3>
-                <div class="grid-list">
-                    <div class="item-card edu">
-                        <span class="item-title">PhD in Computer Science (Third Trimester)</span>
-                        <span class="item-subtitle">Universidad da Vinci</span>
-                        <span class="item-meta">2025 - 2029</span>
-                    </div>
-                    <div class="item-card edu">
-                        <span class="item-title">Master’s in Information Technology Management</span>
-                        <span class="item-subtitle">Universidad del Valle de México</span>
-                        <span class="item-meta">2013 - 2015 | GPA: 9.85/10</span>
-                    </div>
-                    <div class="item-card edu">
-                        <span class="item-title">Bachelor’s in Computer Science and Software Engineering</span>
-                        <span class="item-subtitle">Instituto Politécnico Nacional (UPIICSA)</span>
-                        <span class="item-meta">2005 - 2009 | GPA: 8.9/10</span>
+        <section id="skills" class="mb-5 pt-4">
+            <h3 class="section-title">Core Skills</h3>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                
+                <div class="col">
+                    <div class="card card-custom p-3 border-top border-primary border-3">
+                        <h5 class="card-title text-primary"><i class="fas fa-code"></i> App & Web Dev</h5>
+                        <div>
+                            <span class="badge skill-badge">Java (SE/EE) Advanced</span>
+                            <span class="badge skill-badge">Spring Boot/WebFlux</span>
+                            <span class="badge skill-badge">Shell Scripting</span>
+                            <span class="badge skill-badge">Python</span>
+                            <span class="badge skill-badge">C/C++ / C#</span>
+                            <span class="badge skill-badge">Angular / React</span>
+                            <span class="badge skill-badge">JSP/JSF/ADF</span>
+                        </div>
                     </div>
                 </div>
-            </section>
 
-            <section id="certifications">
-                <h3 class="section-title">Certifications</h3>
-                <div class="grid-list">
-                    <div class="item-card cert"><span class="item-title">Google Cloud Digital Leader (Pending)</span><span class="item-meta">2025</span></div>
-                    <div class="item-card cert"><span class="item-title">IBM Infrastructure Systems Architect</span><span class="item-meta">2015</span></div>
-                    <div class="item-card cert"><span class="item-title">TOGAF 9 Part 1 & 2</span><span class="item-meta">2015</span></div>
-                    <div class="item-card cert"><span class="item-title">Oracle Certified Expert, Java EE 6 Web Services</span><span class="item-meta">2013</span></div>
-                    <div class="item-card cert"><span class="item-title">IBM WebSphere Message Broker V7.0 Admin</span><span class="item-meta">2013</span></div>
-                    <div class="item-card cert"><span class="item-title">IBM WebSphere MQ 7.0 Solution Design</span><span class="item-meta">2012</span></div>
-                    <div class="item-card cert"><span class="item-title">ITIL V3 Foundation</span><span class="item-meta">2011</span></div>
-                    <div class="item-card cert"><span class="item-title">Sun Certified Web Component Developer (Java EE 5)</span><span class="item-meta">2011</span></div>
-                    <div class="item-card cert"><span class="item-title">Sun Certified Programmer (Java SE 5)</span><span class="item-meta">2009</span></div>
+                <div class="col">
+                    <div class="card card-custom p-3 border-top border-warning border-3">
+                        <h5 class="card-title text-primary"><i class="fas fa-network-wired"></i> Middleware & Frameworks</h5>
+                        <div>
+                            <span class="badge skill-badge">IBM Websphere MQ / Broker</span>
+                            <span class="badge skill-badge">Apache Kafka</span>
+                            <span class="badge skill-badge">Oracle Coherence</span>
+                            <span class="badge skill-badge">Quartz</span>
+                            <span class="badge skill-badge">Apache Camel</span>
+                            <span class="badge skill-badge">Hibernate</span>
+                        </div>
+                    </div>
                 </div>
-            </section>
 
-            <section id="publications">
-                <h3 class="section-title">Publications & Awards</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 40px;">
-                    <div style="flex: 1; min-width: 300px;">
-                        <h4>Publications (CodeProject)</h4>
-                        <ul class="list-group" style="margin-top: 15px;">
-                            <li><a href="https://www.codeproject.com/Articles/624615/Movement-Detection-System-Integrated-with-a-Roboti" target="_blank">Movement Detection System Integrated with a Robotic Arm</a> (2021)</li>
-                            <li><a href="https://www.codeproject.com/Tips/748377/Create-a-JMS-Configuration-on-Oracle-Weblogic-g-us" target="_blank">Create a JMS Configuration on Oracle Weblogic 11g using WSLT</a> (2014)</li>
+                <div class="col">
+                    <div class="card card-custom p-3 border-top border-info border-3">
+                        <h5 class="card-title text-primary"><i class="fas fa-cloud"></i> Cloud & DevOps</h5>
+                        <div>
+                            <span class="badge skill-badge">AWS</span>
+                            <span class="badge skill-badge">Google Cloud</span>
+                            <span class="badge skill-badge">Oracle/IBM/Red Hat Cloud</span>
+                            <span class="badge skill-badge">Docker</span>
+                            <span class="badge skill-badge">Kubernetes (CaaS)</span>
+                            <span class="badge skill-badge">Maven / Gradle</span>
+                            <span class="badge skill-badge">Jenkins / SonarQube</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card card-custom p-3 border-top border-success border-3">
+                        <h5 class="card-title text-primary"><i class="fas fa-database"></i> Database & OS</h5>
+                        <div>
+                            <span class="badge skill-badge">Oracle 11g/12c/19c</span>
+                            <span class="badge skill-badge">MongoDB</span>
+                            <span class="badge skill-badge">MySQL / SQL Server</span>
+                            <span class="badge skill-badge">Linux (RedHat/Ubuntu)</span>
+                            <span class="badge skill-badge">AIX / HP-UX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card card-custom p-3 border-top border-danger border-3">
+                        <h5 class="card-title text-primary"><i class="fas fa-server"></i> Servers & Protocols</h5>
+                        <div>
+                            <span class="badge skill-badge">Oracle Weblogic</span>
+                            <span class="badge skill-badge">IBM WAS</span>
+                            <span class="badge skill-badge">RESTful / SOAP Web Services</span>
+                            <span class="badge skill-badge">OAuth2 / SSO / SSL</span>
+                            <span class="badge skill-badge">Microservices / Service Mesh</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card card-custom p-3 border-top border-secondary border-3">
+                        <h5 class="card-title text-primary"><i class="fas fa-briefcase"></i> Business Knowledge</h5>
+                        <div>
+                            <span class="badge skill-badge">Treasury</span>
+                            <span class="badge skill-badge">Banking</span>
+                            <span class="badge skill-badge">Telecommunications</span>
+                            <span class="badge skill-badge">Government Payments</span>
+                            <span class="badge skill-badge">Insurance</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="education" class="mb-5 pt-4">
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <h3 class="section-title">Education</h3>
+                    <div class="list-group">
+                        <div class="list-group-item p-3 list-group-item-custom">
+                            <h5 class="mb-1 text-primary">PhD in Computer Science <span class="badge bg-warning text-dark float-end">2025 - 2029</span></h5>
+                            <p class="mb-1">Universidad da Vinci (Third Trimester)</p>
+                        </div>
+                        <div class="list-group-item p-3 list-group-item-custom">
+                            <h5 class="mb-1 text-primary">Master’s in IT Management <span class="badge bg-light text-dark border float-end">2013 - 2015</span></h5>
+                            <p class="mb-1">Universidad del Valle de México</p>
+                            <small class="text-muted">GPA: 9.85/10</small>
+                        </div>
+                        <div class="list-group-item p-3 list-group-item-custom">
+                            <h5 class="mb-1 text-primary">Bachelor’s in CS and Software Eng. <span class="badge bg-light text-dark border float-end">2005 - 2009</span></h5>
+                            <p class="mb-1">Instituto Politécnico Nacional (UPIICSA)</p>
+                            <small class="text-muted">GPA: 8.9/10</small>
+                        </div>
+                        <div class="list-group-item p-3 list-group-item-custom">
+                            <h5 class="mb-1 text-primary">Computer Technician <span class="badge bg-light text-dark border float-end">2002 - 2005</span></h5>
+                            <p class="mb-1">IPN (CECyT 8)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <h3 class="section-title">Key Certifications</h3>
+                    <ul class="list-group shadow-sm">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Google Cloud Digital Leader <span class="badge bg-warning text-dark rounded-pill">Pending 2025</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">TOGAF 9 Part 1 & 2 <span class="badge bg-light text-dark border rounded-pill">2015</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">IBM Infrastructure Systems Architect <span class="badge bg-light text-dark border rounded-pill">2015</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Oracle Weblogic Server 11g Admin I <span class="badge bg-light text-dark border rounded-pill">2014</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Oracle Certified Expert, Java EE 6 WS <span class="badge bg-light text-dark border rounded-pill">2013</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">IBM WebSphere MQ 7.0 Solution Design <span class="badge bg-light text-dark border rounded-pill">2012</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">ITIL V3 Foundation <span class="badge bg-light text-dark border rounded-pill">2011</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Sun Certified Web Component Dev (EE 5) <span class="badge bg-light text-dark border rounded-pill">2011</span></li>
+                        <li class="list-group-item text-center bg-light"><small class="text-muted"><em>+14 more official IBM, Oracle, and Sun certifications.</em></small></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="extra" class="mb-5 pt-4">
+            <div class="row g-4">
+                
+                <div class="col-md-6">
+                    <h3 class="section-title">Awards & Achievements</h3>
+                    <div class="card card-custom p-3">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2"><i class="fas fa-trophy text-warning me-2"></i> <strong>Monex Bank (2019):</strong> First Bank in Latin America to belong CLS-GROUP.</li>
+                            <li class="mb-2"><i class="fas fa-medal text-warning me-2"></i> <strong>InformationWeek (2015):</strong> 1° Place in Public Sector - IMSS.</li>
+                            <li class="mb-2"><i class="fas fa-award text-warning me-2"></i> <strong>InformationWeek (2014):</strong> 4° Place in Public Sector - SAT.</li>
+                            <li class="mb-2"><i class="fas fa-star text-warning me-2"></i> <strong>IPN Best Averages (2008):</strong> 1º Place Generations 2006-2009.</li>
                         </ul>
                     </div>
-                    <div style="flex: 1; min-width: 300px;">
-                        <h4>Awards</h4>
-                        <ul class="list-group" style="margin-top: 15px;">
-                            <li><strong>Monex Bank:</strong> First Bank in Latin America to belong CLS-GROUP (2019)</li>
-                            <li><strong>InformationWeek - IMSS:</strong> 1° Place in Public Sector (2015)</li>
-                            <li><strong>Challenge LABSAG-UPIICSA:</strong> 1º Place ‘Production Category’ (2009)</li>
+                </div>
+
+                <div class="col-md-6">
+                    <h3 class="section-title">Publications</h3>
+                    <div class="card card-custom p-3">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-3">
+                                <a href="https://www.codeproject.com/Articles/624615/Movement-Detection-System-Integrated-with-a-Roboti" target="_blank" class="text-decoration-none fw-bold text-secondary"><i class="fas fa-book-open me-2"></i> Movement Detection System Integrated with a Robotic Arm</a>
+                                <br><small class="text-muted ms-4">CodeProject (2021)</small>
+                            </li>
+                            <li>
+                                <a href="https://www.codeproject.com/Tips/748377/Create-a-JMS-Configuration-on-Oracle-Weblogic-g-us" target="_blank" class="text-decoration-none fw-bold text-secondary"><i class="fas fa-book-open me-2"></i> Create a JMS Configuration on Oracle Weblogic 11g using WSLT</a>
+                                <br><small class="text-muted ms-4">CodeProject (2014)</small>
+                            </li>
                         </ul>
                     </div>
                 </div>
-            </section>
-        </main>
+
+                <div class="col-md-6">
+                    <h3 class="section-title">Languages & Courses</h3>
+                    <div class="card card-custom p-3">
+                        <h5 class="h6 fw-bold">English (90%)</h5>
+                        <p class="small mb-3">Speaking (85%) | Writing (85%) | Listening (80%)<br>
+                        <span class="text-muted">TOEFL ITP Score: 513 (2015)</span></p>
+                        
+                        <h5 class="h6 fw-bold border-top pt-2">Relevant Courses</h5>
+                        <ul class="small mb-0 ps-3">
+                            <li>Udemy: Microservicios у aplicaciones reactivas con WebFlux y Kafka (2025)</li>
+                            <li>Spring Framework 3.1 (Spring Hispano)</li>
+                            <li>Oracle ADF 2.0 (Kryteria)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h3 class="section-title">Groups & Affiliations</h3>
+                    <div class="card card-custom p-3">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2"><i class="fas fa-hands-helping text-success me-2"></i> <strong>UN World Food Programme:</strong> ShareTheMeal Volunteer (2019-Until now)</li>
+                            <li class="mb-2"><i class="fas fa-globe-americas text-primary me-2"></i> <strong>Amnistía Internacional México:</strong> Member (2015-Until now)</li>
+                            <li class="mb-2"><i class="fas fa-robot text-secondary me-2"></i> <strong>University Robotics Group:</strong> UPIICSA IPN (2007-2009)</li>
+                            <li><i class="fas fa-graduation-cap text-dark me-2"></i> <strong>Telmex Foundation:</strong> Scholarship Recipient (2006-2009)</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <p class="mb-0">&copy; 2026 Octavio Sánchez Huerta.</p>
+    </footer>
 
-            document.querySelectorAll('section').forEach(section => {
-                observer.observe(section);
-            });
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
